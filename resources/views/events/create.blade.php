@@ -3,7 +3,7 @@
 <form action="/store" method="POST">
     @csrf
     <div class="max-w-md mx-auto shadow-lg p-5 my-5 flex flex-col bg-slate-100">
-        <h1 class="text-center text-2xl font-medium">Edit Event</h1>
+        <h1 class="text-center text-2xl font-medium">Create Event</h1>
 
         <label class="mt-3" for="Event Name">Event Name</label>
         <input name="name" class="rounded shadow-md outline-blue-500 p-2" type="text">
