@@ -1,5 +1,4 @@
     @include('templates.header')
-
     <div class="max-w-7xl mx-auto flex justify-end">
         <a href="/events/create"
             class="mt-5 inline-flex items-center justify-center whitespace-nowrap rounded-md border bordetransparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Add
