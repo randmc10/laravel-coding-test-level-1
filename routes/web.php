@@ -18,14 +18,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/events', [EventController::class, 'index']);  
-Route::get('/events/create', [EventController::class, 'create']);
-Route::get('/events/datatables', [EventController::class, 'generateDatatables']); 
-Route::post('/store', [EventController::class, 'store']);
-Route::get('/events/{id}', [EventController::class, 'show']);
-Route::get('/event/{id}/edit', [EventController::class, 'edit']);
-Route::put('/events/{id}', [EventController::class, 'update']);
-Route::delete('/events/{id}', [EventController::class, 'destroy']);
+Route::controller(EventController::class)->group(function(){ 
+    Route::get('/events', 'index');  
+    Route::get('/events/create','create');
+    Route::get('/events/datatables', 'generateDatatables'); 
+    Route::post('/store', 'store');
+    Route::get('/events/{id}', 'show');
+    Route::get('/event/{id}/edit', 'edit');
+    Route::put('/events/{event}', 'update');
+    Route::delete('/events/{id}', 'destroy');
+});
+
 
 Route::middleware([
     'auth:sanctum',
