@@ -82,17 +82,18 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
-    { 
-       $request->validate([
-            "name"      => ['required'],
-            "slug"      =>  ['required'],
-            "startAt"   =>  ['required'],
-            "endAt"     =>  ['required']
-       ]);
+    public function update(Request $request, Event $event){
 
-       $event->update($request->all());
-       return redirect('/events');
+        $validated = $request->validate([
+            "name" => ['required'],
+            "slug" => ['required'],
+            "startAt" => ['required'],
+            "endAt" => ['required'], 
+        ]);
+
+        $event->update($validated);
+
+        return redirect('/events')->with('message', 'Data was successfully updated');
     }
 
     public function patch(Request $request, $id)
