@@ -17,8 +17,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->dateTime('startAt');
-            $table->dateTime('endAt');
+            $table->date('startAt');
+            $table->date('endAt');
             $table->timestamps();
         });
     }

@@ -9,25 +9,26 @@
         <label class="mt-3" for="Event Name">Event Name</label>
         <input name="name" class="rounded shadow-md outline-blue-500 p-2" type="text" value='{{ $event->name }}'>
         @error('name')
-            <p>There is an error</p>
+            <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
 
         <label class="mt-3" for="slug">Slug</label>
         <input name="slug" class="rounded shadow-md outline-blue-500 p-2" type="text" value='{{ $event->slug }}'>
         @error('slug')
-            <p>There is an error</p>
+            <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
 
         <label class="mt-3" for="Start Date">Start Date</label>
-        <input name="startAt" class="rounded shadow-md outline-blue-500 p-2" type="date" value={{ $event->startAt }}>
+        <input name="startAt" class="rounded shadow-md outline-blue-500 p-2" type="date"
+            value={{ date('d-m-Y', strtotime($event->startAt)) }}>
         @error('startAt')
-            <p>There is an error</p>
+            <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
 
         <label class="mt-3" for="End Date">End Date</label>
         <input name="endAt" class="rounded shadow-md outline-blue-500 p-2" type="date" value={{ $event->endAt }}>
         @error('endAt')
-            <p>There is an error</p>
+            <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
 
         <div class="flex w-full">
