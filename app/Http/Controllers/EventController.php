@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestEmail;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -44,6 +45,7 @@ class EventController extends Controller
             'endAt'     =>  'required'
         ]);
         Event::create($validated);
+        Mail::to("laravel-assessment@gmail.com")->send(new TestEmail($validated));
         return redirect('/events');
     } 
 
