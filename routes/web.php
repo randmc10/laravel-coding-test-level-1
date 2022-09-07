@@ -26,3 +26,13 @@ Route::get('/events/{id}', [EventController::class, 'show']);
 Route::get('/event/{id}/edit', [EventController::class, 'edit']);
 Route::put('/events/{id}', [EventController::class, 'update']);
 Route::delete('/events/{id}', [EventController::class, 'destroy']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
