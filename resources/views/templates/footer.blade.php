@@ -1,1 +1,5 @@
- 
+{{-- Datatables Javascripts --}}
+
+</body>
+
+</html>
