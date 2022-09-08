@@ -5,6 +5,7 @@
             new Event
         </a>
     </div>
+
     <div class="max-w-7xl mx-auto shadow-lg p-5 mt-3 rounded bg-slate-200">
         <table class="table-auto bg-slate-100" id="table">
             <thead>

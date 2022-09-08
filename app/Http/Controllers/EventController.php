@@ -11,12 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 
 class EventController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+{ 
+
     public function index()
     { 
         return view('events.index');
@@ -29,13 +25,7 @@ class EventController extends Controller
     public function generateDatatables() {
         return DataTables::of(Event::all())->make(true);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -46,15 +36,9 @@ class EventController extends Controller
         ]);
         Event::create($validated);
         Mail::to("laravel-assessment@gmail.com")->send(new TestEmail($validated));
-        return redirect('/events');
+        return redirect('/events')->with('message', 'You have successfully created an event');
     } 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $event = Event::findOrFail($id);
@@ -65,27 +49,13 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         return view('events.edit', ['event'=>$event]);
     }
-
-    /**
-     * Search for an event.
-     *
-     * @param  string name
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function search($name)
     {
         return Event::where('name', 'like', '%' .$name. '%')->get();
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function update(Request $request, Event $event){
-
         $validated = $request->validate([
             "name" => ['required'],
             "slug" => ['required'],
@@ -94,15 +64,7 @@ class EventController extends Controller
         ]);
 
         $event->update($validated);
-
-        return redirect('/events')->with('message', 'Data was successfully updated');
-    }
-
-    public function patch(Request $request, $id)
-    {
-        $event = Event::findOrFail($id);
-        $event->update($request->all());
-        return $event;
+        return redirect('/events')->with('message', 'Data was successfully updated an event');
     }
 
     public function getActiveEvents() {
@@ -112,12 +74,6 @@ class EventController extends Controller
         return $current_events;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Event::destroy($id);

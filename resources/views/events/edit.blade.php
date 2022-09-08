@@ -19,14 +19,15 @@
         @enderror
 
         <label class="mt-3" for="Start Date">Start Date</label>
-        <input name="startAt" class="rounded shadow-md outline-blue-500 p-2" type="date"
+        <input name="startAt" class="rounded shadow-md outline-blue-500 p-2" type="datetime-local"
             value={{ date('d-m-Y', strtotime($event->startAt)) }}>
         @error('startAt')
             <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
 
         <label class="mt-3" for="End Date">End Date</label>
-        <input name="endAt" class="rounded shadow-md outline-blue-500 p-2" type="date" value={{ $event->endAt }}>
+        <input name="endAt" class="rounded shadow-md outline-blue-500 p-2" type="datetime-local"
+            value={{ $event->endAt }}>
         @error('endAt')
             <p class="text-red-500 text-sm font-bold">{{ $message }}</p>
         @enderror
